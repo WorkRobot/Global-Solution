@@ -10,9 +10,7 @@ export default function App() {
       style={{ backgroundImage: `url(${fundo})` }}
     >
       <Cabecalho />
-      <main className="flex-1 flex justify-center items-center">
-        <Outlet />
-      </main>
+      <Outlet />
       <Rodape />
     </div>
   );

@@ -8,9 +8,10 @@ import Home from "./routes/Home";
 import Sobre from "./routes/Sobre";
 import Contato from "./routes/Contato";
 import Integrantes from "./routes/Integrantes";
-import Cadastro from "./routes/Cadastro";
+import Cadastro from "./routes/Cadastro"; 
 import Logado from "./routes/Logado";
 import "./global.css";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "contato", element: <Contato /> },
       { path: "integrantes", element: <Integrantes /> },
       { path: "cadastro", element: <Cadastro /> },
+      { path: "login", element: <Login /> },
       { path: "logado", element: <Logado /> },
     ],
   },

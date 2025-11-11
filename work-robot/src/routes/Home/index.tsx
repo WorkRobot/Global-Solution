@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import fundo from "../../assets/fundo.png";
 import homefoto from "../../assets/home.png"; 
 
 export default function Home() {
@@ -8,8 +7,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <img src={homefoto} alt="Foto de um robô com welcome to workrobot" className="homefoto" />
-    </div>
+    <main >
+      <img 
+        src={homefoto} 
+        alt="Foto de um robô com welcome to workrobot" 
+        className="homefoto w-[40%] max-w-[800px] h-auto"
+      />
+    </main>
   );
 }
