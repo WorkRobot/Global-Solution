@@ -8,11 +8,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className="h-screen bg-cover bg-center flex flex-col justify-center items-center text-center"
-      style={{ backgroundImage: `url(${fundo})` }}
-    >
-      <img src={homefoto} alt="Foto d eum robô com welcome to workrobot" className="w-64 mb-4" />
+    <div>
+      <img src={homefoto} alt="Foto de um robô com welcome to workrobot" className="homefoto" />
     </div>
   );
 }

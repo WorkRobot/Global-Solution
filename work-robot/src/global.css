@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@layer {
+  html, body {
+    @apply h-screen m-0 p-0;
+  }
+
+  main {
+  @apply flex-1 flex justify-center items-center text-center;
+}
+
+    main img.homefoto {
+  @apply w-[70vw] max-w-[800px] h-auto; 
+}
+
+  header {
+    @apply flex justify-between items-center px-8 py-4 bg-black text-white border-b border-gray-800;
+
+    & .pasta {
+      @apply flex items-center gap-3 text-2xl font-bold;
+    }
+
+    & nav ul {
+      @apply flex gap-6 list-none m-0 p-0; 
+    }
+
+    & nav a {
+      @apply text-white font-medium transition-colors duration-200 hover:text-yellow-600;
+    }
+  }
+
+  footer {
+    @apply mt-auto flex justify-center items-center px-6 py-4 bg-black text-gray-400 text-sm border-t border-gray-800;
+  }
+}
