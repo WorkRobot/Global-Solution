@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
-export default function App(){
-  return(
+import Cabecalho from "./components/Cabecalho/Cabecalho";
+import Rodape from "./components/Rodape/Rodape";
+
+export default function App() {
+  return (
     <div>
-      <Cabecalho/>
-      <Outlet/>
-      <Rodape/>
+      <Cabecalho />
+      <Outlet />
+      <Rodape />
     </div>
   );
 }
