@@ -6,12 +6,12 @@ import App from "./App";
 import Error from "./routes/Error";
 import Home from "./routes/Home";
 import Sobre from "./routes/Sobre";
-import FAQ from "./routes/FAQ";
 import Contato from "./routes/Contato";
 import Integrantes from "./routes/Integrantes";
-import Cadastro from "./routes/Cadastro";
+import Cadastro from "./routes/Cadastro"; 
 import Logado from "./routes/Logado";
 import "./global.css";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +21,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "sobre", element: <Sobre /> },
-      { path: "faq", element: <FAQ /> },
       { path: "contato", element: <Contato /> },
       { path: "integrantes", element: <Integrantes /> },
       { path: "cadastro", element: <Cadastro /> },
+      { path: "login", element: <Login /> },
       { path: "logado", element: <Logado /> },
     ],
   },
