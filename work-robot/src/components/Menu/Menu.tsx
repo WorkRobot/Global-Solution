@@ -8,7 +8,7 @@ export default function Menu() {
         <li><Link to="/sobre">Sobre</Link></li>
         <li><Link to="/contato">Contato</Link></li>
         <li><Link to="/integrantes">Integrantes</Link></li>
-        <li><Link to="/login">login</Link></li>
+        <li><Link to="/login">Login</Link></li>
       </ul>
     </nav>
   );
