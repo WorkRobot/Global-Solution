@@ -10,7 +10,8 @@ export default function Formulario({ campos, onSubmit, titulo }) {
           campos.forEach((campo) => {
             dados[campo.name] = e.target[campo.name].value;
           });
-          onSubmit(dados);
+
+          onSubmit(dados, e);
         }}
       >
         {campos.map((campo) => (
