@@ -15,7 +15,7 @@
   }
 
   header {
-    @apply flex justify-between items-center px-8 py-4 bg-black text-white border-b border-gray-800;
+    @apply flex justify-between items-center px-8 py-4 bg-black border-b border-gray-800;
 
     & .pasta {
       @apply flex items-center gap-3 text-2xl font-bold;
@@ -164,6 +164,72 @@
 
 .card-btn-ver {
   @apply bg-red-700 hover:bg-red-600;
+}
+
+  .theme-toggle-btn {
+    @apply w-10 h-10 flex items-center justify-center 
+           rounded-full border border-gray-500
+           bg-gray-900 text-yellow-400
+           hover:bg-gray-700 transition;
+  }
+
+  html.light .theme-toggle-btn {
+    @apply bg-yellow-300 text-black border-yellow-500 hover:bg-yellow-400;
+  }
+
+  html.dark .theme-toggle-btn {
+    @apply bg-gray-900 text-yellow-400 border-gray-600 hover:bg-gray-700;
+  }
+
+html.light {
+  @apply bg-white text-black;
+}
+
+html.dark {
+  @apply bg-black text-white;
+}
+
+
+html.light header {
+  @apply bg-yellow-50 text-black border-b border-gray-300;
+}
+html.light header nav a {
+  @apply text-black hover:text-yellow-700;
+}
+html.dark header {
+  @apply bg-black text-white border-b border-gray-800;
+}
+
+html.light footer {
+  @apply bg-yellow-50 text-black border-t border-gray-300;
+}
+
+html.dark footer {
+  @apply bg-black text-gray-400 border-t border-gray-800;
+}
+
+html.light .integrante-card {
+  @apply bg-yellow-100 text-black;
+}
+
+html.dark .integrante-card {
+  @apply bg-yellow-800/80 text-white;
+}
+
+html.light .texto {
+  @apply bg-gray-200 text-black;
+}
+
+html.dark .texto {
+  @apply bg-gray-800/80 text-white;
+}
+
+html.light .card-logado {
+  @apply bg-white text-black border-gray-300;
+}
+
+html.dark .card-logado {
+  @apply bg-gray-800/80 text-white border-gray-700;
 }
 
 }
