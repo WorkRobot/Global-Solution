@@ -8,44 +8,48 @@ export default function Login() {
 
   const camposLogin = [
     { name: "email", type: "email", placeholder: "Seu e-mail", required: true },
-    { name: "senha", type: "password", placeholder: "Sua senha", required: true },
+    { name: "senha", type: "password", placeholder: "Sua senha", required: true }
   ];
 
   const handleSubmit = async (dados, event) => {
     const { email, senha } = dados;
 
-    const { data: usuario, error } = await supabase
-      .from("usuario")
-      .select("*")
-      .eq("email_usu", email)
-      .single();
-
-    if (error || !usuario) {
-      alert("E-mail não encontrado!");
+    if (!email || !senha) {
+      alert("Preencha todos os campos.");
       return;
     }
 
-    if (usuario.senha_usu !== senha) {
-      alert("Senha incorreta!");
-      return;
+    try {
+      const { data: usuario, error } = await supabase
+        .from("usuario")
+        .select("*")
+        .eq("email_usu", email)
+        .single();
+
+      if (error || !usuario) {
+        alert("E-mail não encontrado.");
+        return;
+      }
+
+      if (usuario.senha_usu !== senha) {
+        alert("Senha incorreta.");
+        return;
+      }
+
+      alert("Login realizado com sucesso.");
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+      event.target.reset();
+      navigate("/logado");
+    } catch {
+      alert("Não foi possível realizar o login. Tente novamente.");
     }
-
-    alert("Login realizado com sucesso!");
-
-    localStorage.setItem("usuario", JSON.stringify(usuario));
-
-    event.target.reset();
-
-    navigate("/logado");
   };
 
   return (
     <main>
       <div className="texto">
         <h1>Login</h1>
-        <p>
-          Bem-vindo! Insira seu e-mail e senha para acessar sua conta.
-        </p>
+        <p>Bem-vindo! Insira seu e-mail e senha para acessar sua conta.</p>
       </div>
 
       <div className="contato-container">
@@ -63,7 +67,7 @@ export default function Login() {
             </Link>
           </p>
         </div>
-        
+
         <img 
           className="robocontato" 
           src={WorkRobot} 

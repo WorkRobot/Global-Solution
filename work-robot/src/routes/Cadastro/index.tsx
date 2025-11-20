@@ -9,40 +9,48 @@ export default function Cadastro() {
     { name: "email", type: "email", placeholder: "Seu e-mail", required: true },
     { name: "telefone", type: "tel", placeholder: "Seu número de telefone", required: true },
     { name: "senha", type: "password", placeholder: "Crie uma senha", required: true },
-    { name: "confirmarSenha", type: "password", placeholder: "Confirme a senha", required: true },
+    { name: "confirmarSenha", type: "password", placeholder: "Confirme a senha", required: true }
   ];
 
   const handleSubmit = async (dados, event) => {
-  const { nome, email, telefone, senha, confirmarSenha } = dados;
+    const { nome, email, telefone, senha, confirmarSenha } = dados;
 
-  if (senha !== confirmarSenha) {
-    alert("As senhas não coincidem.");
-    return;
-  }
+    if (!nome || !email || !telefone || !senha || !confirmarSenha) {
+      alert("Preencha todos os campos obrigatórios.");
+      return;
+    }
 
-  const novoId = Math.floor(1000 + Math.random() * 9000);
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem.");
+      return;
+    }
 
-  const { data, error } = await supabase
-    .from("usuario")
-    .insert([
-      {
-        id_usu: novoId,
-        nome_usu: nome,
-        email_usu: email,
-        senha_usu: senha,
-        celular_usu: telefone
+    const novoId = Math.floor(1000 + Math.random() * 9000);
+
+    try {
+      const { error } = await supabase
+        .from("usuario")
+        .insert([
+          {
+            id_usu: novoId,
+            nome_usu: nome,
+            email_usu: email,
+            senha_usu: senha,
+            celular_usu: telefone
+          }
+        ]);
+
+      if (error) {
+        alert("Erro ao cadastrar usuário.");
+        return;
       }
-    ]);
 
-  if (error) {
-    console.error("Erro ao cadastrar:", error);
-    alert("Erro ao cadastrar. Veja o console.");
-    return;
-  }
-
-  alert("Cadastro realizado com sucesso!");
-  event.target.reset();
-};
+      alert("Cadastro realizado com sucesso!");
+      event.target.reset();
+    } catch {
+      alert("Não foi possível cadastrar. Tente novamente.");
+    }
+  };
 
   return (
     <main>
@@ -66,7 +74,7 @@ export default function Cadastro() {
             </Link>
           </p>
         </div>
-        
+
         <img 
           className="robocontato" 
           src={WorkRobot} 
