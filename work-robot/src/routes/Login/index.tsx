@@ -1,16 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import WorkRobot from "../../assets/robo.png"; 
 import Formulario from "../../components/Formulario/Formulario";
+import { supabase } from "../../services/workrobotClient";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const camposLogin = [
     { name: "email", type: "email", placeholder: "Seu e-mail", required: true },
     { name: "senha", type: "password", placeholder: "Sua senha", required: true },
   ];
 
-  const handleSubmit = (dados) => {
-    console.log("Login enviado:", dados);
+  const handleSubmit = async (dados, event) => {
+    const { email, senha } = dados;
+
+    const { data: usuario, error } = await supabase
+      .from("usuario")
+      .select("*")
+      .eq("email_usu", email)
+      .single();
+
+    if (error || !usuario) {
+      alert("E-mail não encontrado!");
+      return;
+    }
+
+    if (usuario.senha_usu !== senha) {
+      alert("Senha incorreta!");
+      return;
+    }
+
     alert("Login realizado com sucesso!");
+
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+
+    event.target.reset();
+
+    navigate("/logado");
   };
 
   return (
@@ -24,7 +50,12 @@ export default function Login() {
 
       <div className="contato-container">
         <div>
-          <Formulario campos={camposLogin} onSubmit={handleSubmit} buttonLabel="Entrar" />
+          <Formulario 
+            campos={camposLogin} 
+            onSubmit={handleSubmit} 
+            buttonLabel="Entrar" 
+          />
+
           <p className="cadastro-texto">
             Não tem uma conta?{" "}
             <Link to="/cadastro" className="cadastro-link">
@@ -32,6 +63,7 @@ export default function Login() {
             </Link>
           </p>
         </div>
+        
         <img 
           className="robocontato" 
           src={WorkRobot} 

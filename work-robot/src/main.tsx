@@ -8,10 +8,14 @@ import Home from "./routes/Home";
 import Sobre from "./routes/Sobre";
 import Contato from "./routes/Contato";
 import Integrantes from "./routes/Integrantes";
-import Cadastro from "./routes/Cadastro"; 
-import Logado from "./routes/Logado";
-import "./global.css";
+import Cadastro from "./routes/Cadastro";
 import Login from "./routes/Login";
+import Logado from "./routes/Logado";
+import Quiz from "./routes/Quiz";
+import Editar from "./routes/Editar";
+import Deletar from "./routes/Deletar";
+import Resultado from "./routes/Resultado";
+import "./global.css";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,10 @@ const router = createBrowserRouter([
       { path: "cadastro", element: <Cadastro /> },
       { path: "login", element: <Login /> },
       { path: "logado", element: <Logado /> },
+      { path: "quiz", element: <Quiz /> },
+      { path: "editar", element: <Editar /> },
+      { path: "deletar", element: <Deletar /> },
+      { path: "resultado", element: <Resultado /> },
     ],
   },
 ]);
