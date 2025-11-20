@@ -128,6 +128,42 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
+.card-logado {
+  @apply bg-gray-800/80 text-white rounded-lg shadow-lg p-6 max-w-[420px] w-full
+         flex flex-col items-center border border-gray-700;
+  animation: fadeUp 1s ease forwards;
+}
 
+.card-logado img {
+  @apply w-32 h-32 rounded-full mb-4 shadow-lg object-cover;
+}
+
+.card-logado h1 {
+  @apply text-2xl font-bold mb-1;
+}
+
+.card-logado p {
+  @apply text-gray-300 text-base mb-4 text-center;
+}
+
+.card-logado-opcoes {
+  @apply w-full flex flex-col gap-3 mt-2;
+}
+
+.card-btn {
+  @apply w-full py-2 rounded font-bold transition-colors text-white shadow-md;
+}
+
+.card-btn-amar {
+  @apply bg-yellow-800/80 hover:bg-yellow-700;
+}
+
+.card-btn-esc {
+  @apply bg-gray-900 hover:bg-gray-700;
+}
+
+.card-btn-ver {
+  @apply bg-red-700 hover:bg-red-600;
+}
 
 }

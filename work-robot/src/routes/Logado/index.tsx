@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Robo from "../../assets/favicon.ico"; 
 
 export default function Logado() {
   const [usuario, setUsuario] = useState(null);
@@ -18,30 +19,37 @@ export default function Logado() {
 
   return (
     <main>
-      <h1>Olá, {usuario.nome_usu}</h1>
-      <p>Bem-vindo ao WorkRobot!</p>
+      <div className="card-logado">
 
-      <div>
-        <button 
-          onClick={() => navigate("/quiz")}
-          className="botao-logado"
-        >
-          Fazer Quiz Vocacional
-        </button>
+        <img src={Robo} alt="Robô WorkRobot" />
 
-        <button 
-          onClick={() => navigate("/editar")}
-          className="botao-logado"
-        >
-          Editar Usuário
-        </button>
+        <h1>Olá, {usuario.nome_usu} :)</h1>
+        <p>Bem-vindo ao WorkRobot!</p>
 
-        <button 
-          onClick={() => navigate("/apagar")}
-          className="botao-logado botao-apagar"
-        >
-          Apagar Conta
-        </button>
+        <div className="card-logado-opcoes">
+
+          <button
+            onClick={() => navigate("/quiz")}
+            className="card-btn card-btn-amar"
+          >
+            Fazer Quiz Vocacional
+          </button>
+
+          <button
+            onClick={() => navigate("/editar")}
+            className="card-btn card-btn-esc"
+          >
+            Editar Usuário
+          </button>
+
+          <button
+            onClick={() => navigate("/apagar")}
+            className="card-btn card-btn-ver"
+          >
+            Apagar Conta
+          </button>
+
+        </div>
       </div>
     </main>
   );
