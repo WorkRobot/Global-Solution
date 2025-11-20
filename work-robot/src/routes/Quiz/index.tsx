@@ -15,83 +15,128 @@ export default function Quiz() {
   const navigate = useNavigate();
 
   const perguntas = [
-    {
-      pergunta: "Qual atividade você mais gosta?",
-      alternativas: [
-        { texto: "Resolver problemas de lógica", area: "backend" },
-        { texto: "Criar interfaces bonitas", area: "frontend" },
-        { texto: "Organizar e analisar dados", area: "data" },
-        { texto: "Garantir que tudo funcione sem falhas", area: "devops" }
-      ]
-    },
-    {
-      pergunta: "O que mais te chama atenção?",
-      alternativas: [
-        { texto: "Apps e sites", area: "frontend" },
-        { texto: "Inteligência Artificial", area: "ia" },
-        { texto: "Segurança Digital", area: "cybersecurity" },
-        { texto: "Banco de Dados", area: "data" }
-      ]
-    },
-    {
-      pergunta: "Como você prefere trabalhar?",
-      alternativas: [
-        { texto: "Criando sistemas complexos no servidor", area: "backend" },
-        { texto: "Desenhando interfaces e experiências para usuários", area: "frontend" },
-        { texto: "Explorando e interpretando grandes volumes de dados", area: "data" },
-        { texto: "Automatizando processos e infraestrutura", area: "devops" }
-      ]
-    },
-    {
-      pergunta: "Qual dessas áreas você tem mais interesse em aprender?",
-      alternativas: [
-        { texto: "Redes e segurança cibernética", area: "cybersecurity" },
-        { texto: "Machine Learning e IA", area: "ia" },
-        { texto: "Desenvolvimento de sites e apps", area: "frontend" },
-        { texto: "Banco de dados e análise de dados", area: "data" }
-      ]
-    },
-    {
-      pergunta: "Em qual situação você se sente mais confortável?",
-      alternativas: [
-        { texto: "Configurar servidores e ambientes de produção", area: "devops" },
-        { texto: "Criar protótipos e interfaces visuais", area: "frontend" },
-        { texto: "Desenvolver algoritmos e lógica de software", area: "backend" },
-        { texto: "Proteger sistemas de ameaças e ataques", area: "cybersecurity" }
-      ]
-    }
-  ];
+  {
+    pergunta: "Qual atividade você mais gosta?",
+    alternativas: [
+      { texto: "Resolver problemas de lógica", area: "backend" },
+      { texto: "Criar interfaces bonitas", area: "frontend" },
+      { texto: "Organizar e analisar dados", area: "data" },
+      { texto: "Garantir que tudo funcione sem falhas", area: "devops" }
+    ]
+  },
+  {
+    pergunta: "O que mais te chama atenção?",
+    alternativas: [
+      { texto: "Apps e sites", area: "frontend" },
+      { texto: "Inteligência Artificial", area: "ia" },
+      { texto: "Segurança Digital", area: "cybersecurity" },
+      { texto: "Banco de Dados", area: "data" }
+    ]
+  },
+  {
+    pergunta: "Como você prefere trabalhar?",
+    alternativas: [
+      { texto: "Criando sistemas complexos no servidor", area: "backend" },
+      { texto: "Desenhando interfaces e experiências", area: "frontend" },
+      { texto: "Explorando grandes volumes de dados", area: "data" },
+      { texto: "Automatizando processos e infraestrutura", area: "devops" }
+    ]
+  },
+  {
+    pergunta: "Qual dessas áreas você tem mais interesse em aprender?",
+    alternativas: [
+      { texto: "Redes e segurança cibernética", area: "cybersecurity" },
+      { texto: "Machine Learning e IA", area: "ia" },
+      { texto: "Desenvolvimento de sites e apps", area: "frontend" },
+      { texto: "Banco de dados e análise de dados", area: "data" }
+    ]
+  },
+  {
+    pergunta: "Em qual situação você se sente mais confortável?",
+    alternativas: [
+      { texto: "Configurar servidores e ambientes de produção", area: "devops" },
+      { texto: "Criar protótipos e interfaces visuais", area: "frontend" },
+      { texto: "Desenvolver algoritmos e lógica", area: "backend" },
+      { texto: "Proteger sistemas de ameaças e ataques", area: "cybersecurity" }
+    ]
+  },
+  {
+    pergunta: "O que você acha mais empolgante?",
+    alternativas: [
+      { texto: "Criar experiências visuais modernas", area: "frontend" },
+      { texto: "Construir APIs e sistemas robustos", area: "backend" },
+      { texto: "Treinar modelos de Machine Learning", area: "ia" },
+      { texto: "Gerenciar servidores e deploys", area: "devops" }
+    ]
+  },
+  {
+    pergunta: "Qual tipo de desafio te motiva mais?",
+    alternativas: [
+      { texto: "Descobrir padrões escondidos nos dados", area: "data" },
+      { texto: "Impedir invasões e ataques", area: "cybersecurity" },
+      { texto: "Criar sites rápidos e responsivos", area: "frontend" },
+      { texto: "Resolver bugs complexos no backend", area: "backend" }
+    ]
+  },
+  {
+    pergunta: "Se pudesse escolher um projeto agora, qual seria?",
+    alternativas: [
+      { texto: "Criar uma página moderna para uma empresa", area: "frontend" },
+      { texto: "Construir um sistema de login seguro", area: "backend" },
+      { texto: "Criar um modelo de previsão de comportamento", area: "ia" },
+      { texto: "Criar pipelines automáticos de deploy", area: "devops" }
+    ]
+  },
+  {
+    pergunta: "O que você considera mais importante em tecnologia?",
+    alternativas: [
+      { texto: "A experiência visual das pessoas", area: "frontend" },
+      { texto: "A estrutura e funcionamento interno", area: "backend" },
+      { texto: "A segurança dos dados e sistemas", area: "cybersecurity" },
+      { texto: "A capacidade de aprender com dados", area: "ia" }
+    ]
+  },
+  {
+    pergunta: "Qual habilidade você gostaria mais de dominar?",
+    alternativas: [
+      { texto: "Criar interfaces e animações", area: "frontend" },
+      { texto: "Construir sistemas escaláveis", area: "backend" },
+      { texto: "Analisar e prever tendências com dados", area: "data" },
+      { texto: "Proteger redes e sistemas", area: "cybersecurity" }
+    ]
+  }
+];
 
   const cursos = {
   frontend: {
-    nome: "CS50 Web Programming",
-    plataforma: "edX / Harvard",
-    url: "https://pll.harvard.edu/course/cs50-web-programming-python-and-javascript"
+    nome: "Desenvolvimento Front-end: cursos para criar aplicações web com HTML, CSS e JavaScript",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-javascript-front-end"
   },
   backend: {
-    nome: "Java com Spring Boot",
-    plataforma: "Udemy",
-    url: "https://www.udemy.com/course/spring-boot-java/"
+    nome: "Trilha completa de carreira Dev Back-End Java",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-trilha-completa-dev-backend-java"
   },
   data: {
-    nome: "Análise de Dados com Python",
-    plataforma: "Alison",
-    url: "https://alison.com/pt-BR/claro/diploma-em-analise-de-dados-com-python"
+    nome: "Administração e performance com Oracle Database",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-oracle-database-administracao-performance"
   },
   devops: {
-    nome: "Linux, Containers e DevOps",
-    plataforma: "4Linux",
-    url: "https://www.4linux.com.br/"
+    nome: "Empreendedorismo para Devs",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-empreendedorismo-devs"
   },
   ia: {
-    nome: "Inteligência Artificial e Machine Learning",
-    plataforma: "Google IA",
-    url: "https://ai.google/education/"
+    nome: "Inteligência artificial e Java: crie ferramentas poderosas e chatbots inteligentes com as APIs da OpenAI",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-ia-java-apis-openai"
   },
   cybersecurity: {
-    nome: "Cibersegurança / Segurança da Informação",
-    plataforma: "DIO (Bootcamp) / Cursos Gratuitos",
-    url: "https://www.dio.me/"
+    nome: "Cibersegurança",
+    plataforma: "Alura",
+    url: "https://cursos.alura.com.br/formacao-ciberseguranca"
   }
 };
 
