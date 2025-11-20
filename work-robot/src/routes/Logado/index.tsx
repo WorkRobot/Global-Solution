@@ -43,7 +43,7 @@ export default function Logado() {
           </button>
 
           <button
-            onClick={() => navigate("/apagar")}
+            onClick={() => navigate("/deletar")}
             className="card-btn card-btn-ver"
           >
             Apagar Conta
