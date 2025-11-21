@@ -2,6 +2,15 @@ import { Link } from "react-router-dom";
 import WorkRobot from "../../assets/robo.png"; 
 import Formulario from "../../components/Formulario/Formulario";
 import { supabase } from "../../services/workrobotClient";
+import type { FormEvent } from "react";
+
+interface DadosCadastro {
+  nome: string;
+  email: string;
+  telefone: string;
+  senha: string;
+  confirmarSenha: string;
+}
 
 export default function Cadastro() {
   const camposCadastro = [
@@ -12,7 +21,7 @@ export default function Cadastro() {
     { name: "confirmarSenha", type: "password", placeholder: "Confirme a senha", required: true }
   ];
 
-  const handleSubmit = async (dados, event) => {
+  const handleSubmit = async (dados: DadosCadastro, event: FormEvent<HTMLFormElement>) => {
     const { nome, email, telefone, senha, confirmarSenha } = dados;
 
     if (!nome || !email || !telefone || !senha || !confirmarSenha) {
@@ -46,7 +55,7 @@ export default function Cadastro() {
       }
 
       alert("Cadastro realizado com sucesso!");
-      event.target.reset();
+      (event.target as HTMLFormElement).reset();
     } catch {
       alert("Não foi possível cadastrar. Tente novamente.");
     }
@@ -64,7 +73,7 @@ export default function Cadastro() {
           <Formulario 
             campos={camposCadastro} 
             onSubmit={handleSubmit} 
-            buttonLabel="Cadastrar" 
+            titulo="" 
           />
 
           <p className="cadastro-texto">

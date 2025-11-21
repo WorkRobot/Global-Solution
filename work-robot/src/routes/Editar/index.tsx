@@ -3,9 +3,32 @@ import { useNavigate } from "react-router-dom";
 import Formulario from "../../components/Formulario/Formulario";
 import { supabase } from "../../services/workrobotClient";
 
+interface Usuario {
+  id_usu: number;
+  nome_usu: string;
+  email_usu: string;
+  senha_usu: string;
+  celular_usu: string;
+}
+
+interface DadosEditar {
+  nome: string;
+  email: string;
+  telefone: string;
+  senha?: string;
+}
+
+interface Campo {
+  name: string;
+  type: string;
+  placeholder?: string;
+  required?: boolean;
+  defaultValue?: string;
+}
+
 export default function EditarUsuario() {
-  const [usuario, setUsuario] = useState(null);
-  const [campos, setCampos] = useState([]);
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [campos, setCampos] = useState<Campo[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +39,7 @@ export default function EditarUsuario() {
       return;
     }
 
-    const userData = JSON.parse(dados);
+    const userData: Usuario = JSON.parse(dados);
     setUsuario(userData);
 
     setCampos([
@@ -25,34 +48,34 @@ export default function EditarUsuario() {
         type: "text",
         placeholder: "Seu nome",
         required: true,
-        defaultValue: userData.nome_usu
+        defaultValue: userData.nome_usu,
       },
       {
         name: "email",
         type: "email",
         placeholder: "Seu e-mail",
         required: true,
-        defaultValue: userData.email_usu
+        defaultValue: userData.email_usu,
       },
       {
         name: "telefone",
         type: "tel",
         placeholder: "Seu número",
         required: true,
-        defaultValue: userData.celular_usu
+        defaultValue: userData.celular_usu,
       },
       {
         name: "senha",
         type: "password",
         placeholder: "Nova senha",
-        required: false
-      }
+        required: false,
+      },
     ]);
   }, [navigate]);
 
   if (!usuario || campos.length === 0) return null;
 
-  const handleSubmit = async (dados) => {
+  const handleSubmit = async (dados: DadosEditar) => {
     const { nome, email, telefone, senha } = dados;
 
     if (!nome || !email || !telefone) {
@@ -61,10 +84,10 @@ export default function EditarUsuario() {
     }
 
     try {
-      const updateData = {
+      const updateData: Partial<Usuario> = {
         nome_usu: nome,
         email_usu: email,
-        celular_usu: telefone
+        celular_usu: telefone,
       };
 
       if (senha && senha.trim() !== "") {
@@ -99,10 +122,10 @@ export default function EditarUsuario() {
       </div>
 
       <div className="contato-container">
-        <Formulario
+        <Formulario<DadosEditar>
           campos={campos}
           onSubmit={handleSubmit}
-          buttonLabel="Salvar alterações"
+          titulo=""
         />
       </div>
     </main>

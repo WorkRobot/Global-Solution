@@ -1,17 +1,38 @@
-export default function Formulario({ campos, onSubmit, titulo }) {
+import type { FormEvent } from "react";
+
+interface Campo {
+  name: string;
+  type: string;
+  placeholder?: string;
+  required?: boolean;
+}
+
+interface FormularioProps<T = Record<string, string>> {
+  campos: Campo[];
+  titulo: string;
+  onSubmit: (dados: T, e: FormEvent<HTMLFormElement>) => void | Promise<void>;
+}
+
+export default function Formulario<T = Record<string, string>>({
+  campos,
+  onSubmit,
+  titulo,
+}: FormularioProps<T>) {
   return (
     <div className="form-container">
       <h2 className="form-titulo">{titulo}</h2>
       <form
         className="form-body"
-        onSubmit={(e) => {
+        onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          const dados = {};
+          const dados: Record<string, string> = {};
+
           campos.forEach((campo) => {
-            dados[campo.name] = e.target[campo.name].value;
+            const target = e.currentTarget.elements.namedItem(campo.name) as HTMLInputElement;
+            dados[campo.name] = target.value;
           });
 
-          onSubmit(dados, e);
+          onSubmit(dados as T, e);
         }}
       >
         {campos.map((campo) => (

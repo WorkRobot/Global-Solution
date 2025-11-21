@@ -1,6 +1,14 @@
-
 import WorkRobot from "../../assets/robo.png"; 
 import Formulario from "../../components/Formulario/Formulario";
+import { supabase } from "../../services/workrobotClient";
+import type { FormEvent } from "react";
+
+interface DadosContato {
+  nome: string;
+  email: string;
+  telefone: string;
+  comentario: string;
+}
 
 export default function Contato() {
   const camposContato = [
@@ -10,9 +18,34 @@ export default function Contato() {
     { name: "comentario", type: "textarea", placeholder: "Comentário", required: true },
   ];
 
-  const handleSubmit = (dados) => {
-    console.log("Contato enviado:", dados);
-    alert("Mensagem enviada com sucesso!");
+  const handleSubmit = async (dados: DadosContato, event: FormEvent<HTMLFormElement>) => {
+    const { nome, email, telefone, comentario } = dados;
+
+    if (!nome || !email || !telefone || !comentario) {
+      alert("Preencha todos os campos obrigatórios.");
+      return;
+    }
+
+    try {
+      const { error } = await supabase.from("contato").insert([
+        {
+          nome_contato: nome,
+          email_contato: email,
+          telefone_contato: telefone,
+          comentario_contato: comentario,
+        },
+      ]);
+
+      if (error) {
+        alert("Erro ao enviar mensagem.");
+        return;
+      }
+
+      alert("Mensagem enviada com sucesso!");
+      (event.target as HTMLFormElement).reset();
+    } catch {
+      alert("Não foi possível enviar a mensagem. Tente novamente.");
+    }
   };
 
   return (
@@ -25,7 +58,11 @@ export default function Contato() {
         </p>
       </div>
       <div className="contato-container">
-        <Formulario campos={camposContato} onSubmit={handleSubmit} />
+        <Formulario<DadosContato> 
+          campos={camposContato} 
+          onSubmit={handleSubmit} 
+          titulo="" 
+        />
         <img 
           className="robocontato animate-float" 
           src={WorkRobot} 

@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+interface Curso {
+  nome: string;
+  plataforma: string;
+  url: string;
+}
+
+interface ResultadoType {
+  area: string;
+  curso: Curso;
+}
+
 export default function Resultado() {
-  const [resultado, setResultado] = useState(null);
+  const [resultado, setResultado] = useState<ResultadoType | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const area = localStorage.getItem("quiz_area");
-    const curso = JSON.parse(localStorage.getItem("quiz_curso"));
+    const curso = localStorage.getItem("quiz_curso");
 
     if (!area || !curso) {
       navigate("/quiz");
       return;
     }
 
-    setResultado({ area, curso });
+    setResultado({ area, curso: JSON.parse(curso) });
   }, [navigate]);
 
   if (!resultado) return null;
@@ -24,7 +35,10 @@ export default function Resultado() {
       <div className="card-logado">
         <h1>Seu Resultado!</h1>
         <p>Você se encaixa mais na área de {resultado.area}.</p>
-        <p>Curso sugerido: {resultado.curso.nome} na plataforma {resultado.curso.plataforma}.</p>
+        <p>
+          Curso sugerido: {resultado.curso.nome} na plataforma{" "}
+          {resultado.curso.plataforma}.
+        </p>
 
         <div className="card-logado-opcoes">
           <a

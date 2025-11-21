@@ -2,6 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import WorkRobot from "../../assets/robo.png"; 
 import Formulario from "../../components/Formulario/Formulario";
 import { supabase } from "../../services/workrobotClient";
+import type { FormEvent } from "react";
+
+interface DadosLogin {
+  email: string;
+  senha: string;
+}
+
+interface Usuario {
+  id_usu: number;
+  nome_usu: string;
+  email_usu: string;
+  senha_usu: string;
+  celular_usu: string;
+}
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,7 +25,7 @@ export default function Login() {
     { name: "senha", type: "password", placeholder: "Sua senha", required: true }
   ];
 
-  const handleSubmit = async (dados, event) => {
+  const handleSubmit = async (dados: DadosLogin, event: FormEvent<HTMLFormElement>) => {
     const { email, senha } = dados;
 
     if (!email || !senha) {
@@ -31,14 +45,17 @@ export default function Login() {
         return;
       }
 
-      if (usuario.senha_usu !== senha) {
+      // AQUI TÁ A CONST QUE VOCÊ QUIS! 👇
+      const usuarioLogado = usuario as Usuario;
+
+      if (usuarioLogado.senha_usu !== senha) {
         alert("Senha incorreta.");
         return;
       }
 
       alert("Login realizado com sucesso.");
-      localStorage.setItem("usuario", JSON.stringify(usuario));
-      event.target.reset();
+      localStorage.setItem("usuario", JSON.stringify(usuarioLogado));
+      (event.target as HTMLFormElement).reset();
       navigate("/logado");
     } catch {
       alert("Não foi possível realizar o login. Tente novamente.");
@@ -54,10 +71,10 @@ export default function Login() {
 
       <div className="contato-container">
         <div>
-          <Formulario 
+          <Formulario<DadosLogin>
             campos={camposLogin} 
             onSubmit={handleSubmit} 
-            buttonLabel="Entrar" 
+            titulo=""
           />
 
           <p className="cadastro-texto">

@@ -38,7 +38,7 @@ A proposta é simples e consciente: **preparar jovens e profissionais para o fut
 
 ## 🛠 Tecnologias Utilizadas
 - **Front-end:** React + TypeScript  
-- **Back-end:** Java  
+- **Back-end:** Supabase 
 - **Banco de Dados:** SQL  
 - **Hospedagem / Infraestrutura:**Vercel 
 - **Controle de versão:** Git + GitHub

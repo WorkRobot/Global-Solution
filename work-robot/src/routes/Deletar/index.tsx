@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../services/workrobotClient";
 
+interface Usuario {
+  id_usu: number;
+  nome_usu: string;
+  email_usu: string;
+  senha_usu: string;
+  celular_usu: string;
+}
+
 export default function ApagarUsuario() {
-  const [usuario, setUsuario] = useState(null);
+  const [usuario, setUsuario] = useState<Usuario | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,7 +22,7 @@ export default function ApagarUsuario() {
       return;
     }
 
-    setUsuario(JSON.parse(dados));
+    setUsuario(JSON.parse(dados) as Usuario);
   }, [navigate]);
 
   if (!usuario) return null;
