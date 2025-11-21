@@ -189,7 +189,6 @@ html.dark {
   @apply bg-black text-white;
 }
 
-
 html.light header {
   @apply bg-yellow-50 text-black border-b border-gray-300;
 }
@@ -230,6 +229,28 @@ html.light .card-logado {
 
 html.dark .card-logado {
   @apply bg-gray-800/80 text-white border-gray-700;
+}
+
+.menu {
+  @apply relative;
+}
+
+.botao-menu {
+  @apply lg:hidden text-white text-2xl cursor-pointer;
+}
+
+.lista-menu {
+  @apply hidden lg:flex lg:flex-row lg:gap-6 mt-4 lg:mt-0;
+}
+.lista-menu.aberto {
+  @apply flex flex-col gap-3 mt-4;
+}
+
+.lista-menu li a {
+  @apply text-white font-medium hover:text-yellow-600 transition-colors;
+}
+html.light .botao-menu {
+  @apply text-black;
 }
 
 }
