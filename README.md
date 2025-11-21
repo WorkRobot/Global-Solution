@@ -82,7 +82,7 @@ o
 - Crie uma conta ou faça login.
 - Responda ao quiz interativo para receber recomendações personalizadas de cursos.
 
-Você pode acessar a aplicação pelo vercel:
+Você pode acessar a aplicação pelo vercel: https://work-robot-eta.vercel.app/
 ---
 
 ## 📂 Estrutura do Projeto
@@ -163,7 +163,7 @@ Você pode entrar em contato com os integrantes do projeto:
 ---
 ## 🔗 Links
 - Link do Repositório: https://github.com/WorkRobot/Global-Solution
-- Link do Youtube: https://youtu.be/hQCe3Ox3KmI?si=ZcpLb9BeC8NFHi5Q
+- Link do Youtube: https://youtu.be/LiEPu1ci_Ho?si=XgOAZxPuS93s4gUF
 
 
 ---
