@@ -16,6 +16,7 @@ import Editar from "./routes/Editar";
 import Deletar from "./routes/Deletar";
 import Resultado from "./routes/Resultado";
 import "./global.css";
+import FAQ from "./routes/Faq";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "contato", element: <Contato /> },
       { path: "integrantes", element: <Integrantes /> },
       { path: "cadastro", element: <Cadastro /> },
+      { path: "faq", element: <FAQ /> },
       { path: "login", element: <Login /> },
       { path: "logado", element: <Logado /> },
       { path: "quiz", element: <Quiz /> },

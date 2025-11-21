@@ -55,31 +55,40 @@ export default function EditarUsuario() {
   const handleSubmit = async (dados) => {
     const { nome, email, telefone, senha } = dados;
 
-    const updateData = {
-      nome_usu: nome,
-      email_usu: email,
-      celular_usu: telefone
-    };
-
-    if (senha && senha.trim() !== "") {
-      updateData.senha_usu = senha;
-    }
-
-    const { error } = await supabase
-      .from("usuario")
-      .update(updateData)
-      .eq("id_usu", usuario.id_usu);
-
-    if (error) {
-      alert("Erro ao atualizar.");
+    if (!nome || !email || !telefone) {
+      alert("Preencha todos os campos obrigatórios.");
       return;
     }
 
-    const atualizado = { ...usuario, ...updateData };
-    localStorage.setItem("usuario", JSON.stringify(atualizado));
+    try {
+      const updateData = {
+        nome_usu: nome,
+        email_usu: email,
+        celular_usu: telefone
+      };
 
-    alert("Atualizado com sucesso!");
-    navigate("/logado");
+      if (senha && senha.trim() !== "") {
+        updateData.senha_usu = senha;
+      }
+
+      const { error } = await supabase
+        .from("usuario")
+        .update(updateData)
+        .eq("id_usu", usuario.id_usu);
+
+      if (error) {
+        alert("Erro ao atualizar.");
+        return;
+      }
+
+      const atualizado = { ...usuario, ...updateData };
+      localStorage.setItem("usuario", JSON.stringify(atualizado));
+
+      alert("Atualizado com sucesso.");
+      navigate("/logado");
+    } catch {
+      alert("Não foi possível atualizar. Tente novamente.");
+    }
   };
 
   return (

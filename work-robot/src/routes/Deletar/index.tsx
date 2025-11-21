@@ -26,20 +26,23 @@ export default function ApagarUsuario() {
 
     if (!confirmar) return;
 
-    const { error } = await supabase
-      .from("usuario")
-      .delete()
-      .eq("id_usu", usuario.id_usu);
+    try {
+      const { error } = await supabase
+        .from("usuario")
+        .delete()
+        .eq("id_usu", usuario.id_usu);
 
-    if (error) {
-      console.error(error);
-      alert("Erro ao apagar conta.");
-      return;
+      if (error) {
+        alert("Erro ao apagar conta.");
+        return;
+      }
+
+      localStorage.removeItem("usuario");
+      alert("Conta apagada com sucesso.");
+      navigate("/login");
+    } catch {
+      alert("Não foi possível apagar a conta. Tente novamente.");
     }
-    localStorage.removeItem("usuario");
-
-    alert("Conta apagada com sucesso!");
-    navigate("/login");
   };
 
   return (
