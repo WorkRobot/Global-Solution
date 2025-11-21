@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@layer {
+  html, body {
+    @apply h-screen m-0 p-0 bg-black text-white flex flex-col;
+  }
+
+  main {
+    @apply flex-1 flex flex-col justify-center items-center text-center p-6;
+  }
+
+  main img.homefoto {
+    @apply w-4/5 max-w-[800px] h-auto rounded-lg shadow-lg;
+    animation: zoom 4s ease-in-out infinite;
+  }
+
+  header {
+    @apply flex justify-between items-center px-8 py-4 bg-black border-b border-gray-800;
+
+    & .pasta {
+      @apply flex items-center gap-3 text-2xl font-bold;
+    }
+
+    & nav ul {
+      @apply flex gap-6 list-none m-0 p-0;
+    }
+
+    & nav a {
+      @apply text-white font-medium transition-colors duration-200 hover:text-yellow-600;
+    }
+  }
+
+  footer {
+    @apply mt-auto flex justify-center items-center px-6 py-4 bg-black text-gray-400 text-sm border-t border-gray-800;
+  }
+
+  @keyframes zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .integrantes-container {
+    @apply flex flex-col md:flex-row justify-center items-start gap-6 mt-6;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .integrante-card {
+    @apply bg-yellow-800/80 text-white rounded-lg shadow-lg p-4 flex flex-col items-center w-[270px] min-h-[400px];
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .integrante-card img {
+    @apply w-32 h-32 rounded-full mb-4 object-cover;
+  }
+
+  .integrante-card h2 {
+    @apply text-lg font-bold mb-2 text-center;
+  }
+
+  .integrante-card p {
+    @apply text-base leading-relaxed text-justify indent-8;
+  }
+
+  .integrante-card div {
+    @apply flex justify-center gap-4 mt-2;
+  }
+
+  .integrante-card div a img {
+    @apply w-6 h-6;
+  }
+
+  .texto {
+    @apply bg-gray-800/80 text-white rounded-lg p-6 max-w-[800px] mx-auto mb-8 shadow-lg;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .texto h1 {
+    @apply text-3xl font-bold mb-4;
+  }
+
+  .texto p {
+    @apply text-base leading-relaxed text-justify mb-4 indent-8;
+  }
+
+  .contato-container {
+    @apply flex flex-col md:flex-row md:items-center justify-center w-full max-w-5xl mx-auto gap-6;
+  }
+
+  .form-container {
+    @apply bg-black/80 p-6 rounded-lg shadow-lg w-full max-w-md md:max-w-lg;
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .form-body {
+    @apply flex flex-col gap-4;
+  }
+
+  .form-input {
+    @apply p-2 rounded bg-gray-900 placeholder-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500;
+  }
+
+  .form-textarea {
+    @apply p-2 rounded bg-gray-900 text-yellow-700 placeholder-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none;
+  }
+
+  .form-button {
+    @apply bg-yellow-800/80 text-black font-bold py-2 rounded hover:bg-yellow-700 transition-colors;
+  }
+
+  .robocontato {
+    @apply w-48 md:w-56;
+    animation: float 4s ease-in-out infinite;
+  }
+  .cadastro-texto {
+  @apply mt-4 text-center text-sm text-yellow-400;
+}
+
+.cadastro-link {
+  @apply underline hover:text-blue-500 transition-colors;
+}
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+.card-logado {
+  @apply bg-gray-800/80 text-white rounded-lg shadow-lg p-6 max-w-[420px] w-full
+         flex flex-col items-center border border-gray-700;
+  animation: fadeUp 1s ease forwards;
+}
+
+.card-logado img {
+  @apply w-32 h-32 rounded-full mb-4 shadow-lg object-cover;
+}
+
+.card-logado h1 {
+  @apply text-2xl font-bold mb-1;
+}
+
+.card-logado p {
+  @apply text-gray-300 text-base mb-4 text-center;
+}
+
+.card-logado-opcoes {
+  @apply w-full flex flex-col gap-3 mt-2;
+}
+
+.card-btn {
+  @apply w-full py-2 rounded font-bold transition-colors text-white shadow-md;
+}
+
+.card-btn-amar {
+  @apply bg-yellow-800/80 hover:bg-yellow-700;
+}
+
+.card-btn-esc {
+  @apply bg-gray-900 hover:bg-gray-700;
+}
+
+.card-btn-ver {
+  @apply bg-red-700 hover:bg-red-600;
+}
+
+  .theme-toggle-btn {
+    @apply w-10 h-10 flex items-center justify-center 
+           rounded-full border border-gray-500
+           bg-gray-900 text-yellow-400
+           hover:bg-gray-700 transition;
+  }
+
+  html.light .theme-toggle-btn {
+    @apply bg-yellow-300 text-black border-yellow-500 hover:bg-yellow-400;
+  }
+
+  html.dark .theme-toggle-btn {
+    @apply bg-gray-900 text-yellow-400 border-gray-600 hover:bg-gray-700;
+  }
+
+html.light {
+  @apply bg-white text-black;
+}
+
+html.dark {
+  @apply bg-black text-white;
+}
+
+html.light header {
+  @apply bg-yellow-50 text-black border-b border-gray-300;
+}
+html.light header nav a {
+  @apply text-black hover:text-yellow-700;
+}
+html.dark header {
+  @apply bg-black text-white border-b border-gray-800;
+}
+
+html.light footer {
+  @apply bg-yellow-50 text-black border-t border-gray-300;
+}
+
+html.dark footer {
+  @apply bg-black text-gray-400 border-t border-gray-800;
+}
+
+html.light .integrante-card {
+  @apply bg-yellow-100 text-black;
+}
+
+html.dark .integrante-card {
+  @apply bg-yellow-800/80 text-white;
+}
+
+html.light .texto {
+  @apply bg-gray-200 text-black;
+}
+
+html.dark .texto {
+  @apply bg-gray-800/80 text-white;
+}
+
+html.light .card-logado {
+  @apply bg-white text-black border-gray-300;
+}
+
+html.dark .card-logado {
+  @apply bg-gray-800/80 text-white border-gray-700;
+}
+
+.menu {
+  @apply relative;
+}
+
+.botao-menu {
+  @apply lg:hidden text-white text-2xl cursor-pointer;
+}
+
+.lista-menu {
+  @apply hidden lg:flex lg:flex-row lg:gap-6 mt-4 lg:mt-0;
+}
+.lista-menu.aberto {
+  @apply flex flex-col gap-3 mt-4;
+}
+
+.lista-menu li a {
+  @apply text-white font-medium hover:text-yellow-600 transition-colors;
+}
+html.light .botao-menu {
+  @apply text-black;
+}
+.faq {
+  @apply bg-yellow-800/80 text-white rounded-lg p-4 mb-4 shadow-lg max-w-[800px] mx-auto;
+}
+
+.faq h2 {
+  @apply text-xl font-bold mb-2;
+}
+
+.faq p {
+  @apply text-base leading-relaxed;
+}
+
+@layer utilities {
+  @media (max-width: 640px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+
+    .lista-menu {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+  }
+}
+
+
+}

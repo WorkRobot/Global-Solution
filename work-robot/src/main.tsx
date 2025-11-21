@@ -6,12 +6,17 @@ import App from "./App";
 import Error from "./routes/Error";
 import Home from "./routes/Home";
 import Sobre from "./routes/Sobre";
-import FAQ from "./routes/FAQ";
 import Contato from "./routes/Contato";
 import Integrantes from "./routes/Integrantes";
 import Cadastro from "./routes/Cadastro";
+import Login from "./routes/Login";
 import Logado from "./routes/Logado";
+import Quiz from "./routes/Quiz";
+import Editar from "./routes/Editar";
+import Deletar from "./routes/Deletar";
+import Resultado from "./routes/Resultado";
 import "./global.css";
+import FAQ from "./routes/Faq";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +26,16 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "sobre", element: <Sobre /> },
-      { path: "faq", element: <FAQ /> },
       { path: "contato", element: <Contato /> },
       { path: "integrantes", element: <Integrantes /> },
       { path: "cadastro", element: <Cadastro /> },
+      { path: "faq", element: <FAQ /> },
+      { path: "login", element: <Login /> },
       { path: "logado", element: <Logado /> },
+      { path: "quiz", element: <Quiz /> },
+      { path: "editar", element: <Editar /> },
+      { path: "deletar", element: <Deletar /> },
+      { path: "resultado", element: <Resultado /> },
     ],
   },
 ]);
